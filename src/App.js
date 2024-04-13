@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import TrafficSignal from "./components/TrafficSignal/TrafficSignal";
 
-function App() {
+// red->green->yellow->red
+
+const config = {
+  red: {
+    duration: 4000,
+    next: "green",
+  },
+  yellow: {
+    duration: 500,
+    next: "red",
+  },
+  green: {
+    duration: 3000,
+    next: "yellow",
+  },
+};
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="title">Traffic Signal Demo</h1>
+      <TrafficSignal config={config} layout="vertical" />
+      <TrafficSignal config={config} />
     </div>
   );
 }
-
-export default App;
